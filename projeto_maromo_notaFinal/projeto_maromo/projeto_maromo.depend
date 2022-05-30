@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1653919605 source:c:\users\aluno\desktop\projeto_maromo_notafinal\projeto_maromo\main.c
+	<stdio.h>
+	<stdlib.h>
+	"produto.h"
+
+1653918064 c:\users\aluno\desktop\projeto_maromo_notafinal\projeto_maromo\produto.h
+
+1653919975 source:c:\users\aluno\desktop\projeto_maromo_notafinal\projeto_maromo\produto.c
+	<stdio.h>
+	<stdlib.h>
+	"produto.h"
+
