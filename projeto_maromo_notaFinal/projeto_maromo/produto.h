@@ -16,3 +16,7 @@ void listarTodos(produto* p[], int pos);
 void encontrar(produto* p[], int proc, int pos);
 
 void atualizar(produto* p[], int proc, int pos);
+
+void comprar(produto* p[], int proc, int pos);
+
+void vender(produto* p[], int proc, int pos);
