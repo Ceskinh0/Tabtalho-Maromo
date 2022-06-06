@@ -11,80 +11,87 @@ void inicializar(produto* p[], int tam){
 void adicionar(produto* p[], int pos){
     p[pos] = (produto*)malloc(sizeof(struct Produto));
      fflush(stdin);
-    printf("Digite o codigo do produto: ");
+    printf("\tDigite o codigo do produto: ");
     scanf("%d", &p[pos]->codigo);
      fflush(stdin);
-    printf("Digite a descricao do produto: ");
+    printf("\tDigite a descricao do produto: ");
     scanf("%[^\n]", p[pos]->descricao);
      fflush(stdin);
-    printf("Digite o nome do fornecedor: ");
+    printf("\tDigite o nome do fornecedor: ");
     scanf("%[^\n]", p[pos]->fornecedor);
      fflush(stdin);
-    printf("Digite quantidade em estoque: ");
+    printf("\tDigite quantidade em estoque: ");
     scanf("%d", &p[pos]->quantEstoque);
      fflush(stdin);
-    printf("Digite o preco do produto: ");
+    printf("\tDigite o preco do produto: ");
     scanf("%lf", &p[pos]->preco);
-    printf("Registro cadastro com sucesso \n");
+    printf("\tRegistro cadastro com sucesso \n");
 }
 void listarTodos(produto* p[], int pos){
     for(int i=0; i<pos; i++){
-        printf("Dados do Registro: %d \n", i+1 );
-        printf("codigo do produto: %d \n", p[i]->codigo);
-        printf("Descricao do produto: %s \n", p[i]->descricao);
-        printf("Nome do fornecedor: %s \n", p[i]->fornecedor);
-        printf("Quantidade em estoque: %d \n", p[i]->quantEstoque);
-        printf("Preco do produto: %.2lf \n", p[i]->preco);
-        printf("--------------------------------------\n");
+        printf("\tDados do Registro: %d \n", i+1 );
+        printf("\tcodigo do produto: %d \n", p[i]->codigo);
+        printf("\tDescricao do produto: %s \n", p[i]->descricao);
+        printf("\tNome do fornecedor: %s \n", p[i]->fornecedor);
+        printf("\tQuantidade em estoque: %d \n", p[i]->quantEstoque);
+        printf("\tPreco do produto: %.2lf \n", p[i]->preco);
+        printf("\t--------------------------------------\n");
     }
 }
 
 void encontrar(produto* p[], int proc, int pos){
     for(int i=0; i<pos; i++){
         if(proc== p[i]->codigo){
-            printf("Dados do Registro: %d \n", i+1 );
-            printf("Codigo do produto: %d \n", p[i]->codigo);
-            printf("Descricao do produto: %s \n", p[i]->descricao);
-            printf("Nome do fornecedor: %s \n", p[i]->fornecedor);
-            printf("Quantidade em estoque: %d \n", p[i]->quantEstoque);
-            printf("Preco do produto: %.2lf \n", p[i]->preco);
-            printf("--------------------------------------\n");
+            printf("\tDados do Registro: %d \n", i+1 );
+            printf("\tCodigo do produto: %d \n", p[i]->codigo);
+            printf("\tDescricao do produto: %s \n", p[i]->descricao);
+            printf("\tNome do fornecedor: %s \n", p[i]->fornecedor);
+            printf("\tQuantidade em estoque: %d \n", p[i]->quantEstoque);
+            printf("\tPreco do produto: %.2lf \n", p[i]->preco);
+            printf("\t--------------------------------------\n");
             return;
         }
     }
-    printf("Codigo nao encontrado \n");
+    printf("\tCodigo nao encontrado \n");
 }
 
 void comprar(produto* p[], int proc, int pos){
     int quantComp=0;
-    printf("Digite a quantidade a ser comprada:");
+    int inv=0;
+    printf("\tDigite a quantidade a ser comprada:");
     scanf("%d", &quantComp);
     for(int i=0; i<pos; i++){
         if(proc==p[i]->codigo){
+            inv=1;
             p[i]->quantEstoque +=quantComp;
-            printf("Pdotudo comprado com sucesso!\n");
-        }else{
-            printf("Codigo nao encontrado \n");
+            printf("\tProduto comprado com sucesso!\n");
         }
+    }
+    if(inv==0){
+        printf("\tCodigo nao encontrado \n");
     }
     fflush(stdin);
 }
 
 void vender(produto* p[], int proc, int pos){
     int quantVend=0;
-    printf("Digite a quantidade a ser vendida:");
+    int inv=0;
+    printf("\tDigite a quantidade a ser vendida:");
     scanf("%d", &quantVend);
     for(int i=0; i<pos; i++){
         if(proc==p[i]->codigo){
+                inv=1;
             if(p[i]->quantEstoque==0 || quantVend > p[i]->quantEstoque){
-                printf("Quantidade invalida impossivel vender!\n");
+                printf("\tQuantidade invalida impossivel vender!\n");
             }else{
                 p[i]->quantEstoque -=quantVend;
-                printf("Poduto vendido com sucesso!\n");
+                printf("\tProduto vendido com sucesso!\n");
+                }
             }
-        }else{
-            printf("Codigo nao encontrado \n");
         }
-    }
+        if(inv==0){
+        printf("\tCodigo nao encontrado \n");
+        }
     fflush(stdin);
 }
+
